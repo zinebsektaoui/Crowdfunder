@@ -5,10 +5,11 @@ const userSchema = new mongoose.Schema({
     "email" : String,
     "password" : String,
     "role" : {
+        "type" : String,
         "default" : "projectOwner",
         "enum" : ["admin", "projectOwner", "investor"]
     }
 })
 
 const users = mongoose.model("users", userSchema)
-export default users
+module.exports = users

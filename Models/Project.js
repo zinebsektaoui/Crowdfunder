@@ -1,5 +1,4 @@
-const { default: mongoose } = require("mongoose")
-const mpongoose = require("mongoose")
+const mongoose = require("mongoose")
 
 const projectSchema = new mongoose.Schema({
     "title" : String,
