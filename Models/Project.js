@@ -6,7 +6,8 @@ const projectSchema = new mongoose.Schema({
     "capital" : Number,
     "status" : {
         type : String,
-        enum : ["open", "closed"]
+        enum : ["open", "closed"],
+        default : "open"
     },
     "maxInvestment" : Number,
     "curentAmount" : Number,
@@ -16,6 +17,5 @@ const projectSchema = new mongoose.Schema({
     }
 })
 
-const projects = mongoose.model(projectSchema, "projects")
-
-export default projects
+const projects = mongoose.model("projects", projectSchema)
+module.exports = projects

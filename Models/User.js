@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
     "role" : {
         "type" : String,
         "default" : "projectOwner",
-        "enum" : ["admin", "projectOwner", "investor"]
+        "enum" : ["Admin", "Project Owner", "Investor"],
+        "default" : "Project Owner"
     }
 })
 
