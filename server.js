@@ -1,10 +1,13 @@
 const express = require("express")
 const dotenv = require("dotenv")
 const mongoose = require("mongoose")
+const userRoutes = require("./Routes/userRoutes")
 
 dotenv.config()
 const app = express()
 app.use(express.json())
+
+app.use("/user", userRoutes)
 
 const port = process.env.PORT
 const MONGODB_URL = process.env.MONGODB_URI
