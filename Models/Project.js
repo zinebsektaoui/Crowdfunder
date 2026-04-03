@@ -11,6 +11,10 @@ const projectSchema = new mongoose.Schema({
     },
     "maxInvestment" : Number,
     "curentAmount" : Number,
+    "investWith" : {
+        type : Number,
+        default : 0
+    },
     "ownerId" : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "User"

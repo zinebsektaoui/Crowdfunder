@@ -41,10 +41,15 @@ const projectSchema = Joi.object({
     
     curentAmount: Joi.number()
         .min(0)
-        .required()
         .messages({
             'number.min': 'Current amount cannot be negative'
         }),
+    
+    investWith: Joi.number()
+        .min(0)
+        .messages({
+            'number.min': 'Investment amount cannot be negative'
+        })
 });
 
 module.exports = projectSchema;
