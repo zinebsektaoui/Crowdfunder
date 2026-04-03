@@ -14,7 +14,11 @@ const userSchema = Joi.object({
         'string.min': 'Le mot de passe doit contenir au moins 6 caractères',
         'any.required': 'Le mot de passe est requis'
     }),
-    role: Joi.string().valid("Admin", "Project Owner", "Investor").default('user')
+    role: Joi.string().valid("Admin", "Project Owner", "Investor").default('user'),
+    balance: Joi.number().positive().messages({
+        'number.positive': 'Le solde doit être un nombre positif'
+    })
+    
 })
 
 
