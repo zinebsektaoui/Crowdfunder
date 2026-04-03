@@ -4,6 +4,7 @@ const userSchema = new mongoose.Schema({
     "name" : String,
     "email" : String,
     "password" : String,
+    "balance" : Number,
     "role" : {
         "type" : String,
         "default" : "projectOwner",
