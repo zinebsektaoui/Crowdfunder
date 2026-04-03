@@ -9,9 +9,11 @@ const projectSchema = new mongoose.Schema({
         enum : ["open", "closed"],
         default : "open"
     },
-    "maxInvestment" : Number,
-    "curentAmount" : Number,
-    "investWith" : {
+    "maxInvestment" : {
+        type : Number,
+        default : 50
+    },
+    "curentAmount" : {
         type : Number,
         default : 0
     },

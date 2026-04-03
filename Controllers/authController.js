@@ -4,13 +4,17 @@ const jwt = require("jsonwebtoken")
 
 const signUp = async(req, res) =>{
     try{
-        const {name, email, password, role} = req.body
+        const {name, email, password, role, balance} = req.body
         if(!name || !email || !password || !role) {
             return res.status(400).json({message : "You must enter a name, email, password and role"})
         }
         const uniqueMail = await User.findOne({email : email})
         if(uniqueMail) {
             return res.status(400).json({message : "The mail must be unique"})
+        }if(role === "Investor" && !balance){
+            return res.status(400).json({error: "Investor must have a balance"})
+        }if(role !== "Investor" && balance){
+            return res.status(400).json({error: "Only investors can have a balance"})
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -20,7 +24,7 @@ const signUp = async(req, res) =>{
             email,
             password: hashedPassword,
             role,
-            
+            balance
         });
 
         const token = jwt.sign(
