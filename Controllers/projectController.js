@@ -68,4 +68,19 @@ const getAll = async(req, res) => {
     }
 }
 
-module.exports = { create, drop, update, getAll }
+const closeProject = async(req, res) => {
+    try{
+        const {id} = req.params
+        const project = await Project.findById(id)
+        if(!project) {
+            return res.status(404).json({error : "Project not found !"})
+        }
+        project.status = "closed"
+        await project.save()
+        return res.status(200).json({success : "Project closed"})
+    }catch(err){
+        return res.status(400).json({error : err.message})
+    }
+}
+
+module.exports = { create, drop, update, getAll, closeProject }
