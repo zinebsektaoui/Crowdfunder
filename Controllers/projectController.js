@@ -2,12 +2,11 @@ const Project = require("../Models/Project")
 
 const create = async(req, res) => {
     try{
-        const {title, description, capital, maxInvestment, investWith} = req.body
+        const {title, description, capital, maxInvestment, curentAmount} = req.body
         if(!title || !description || !capital || !maxInvestment ){
             return res.status(400).json({error : "You must fill all fields !"})
         }
-        const curentAmount = Number(investWith) || 0
-        const project = {title, description, capital, maxInvestment, curentAmount, investWith, ownerId : req.user.userId}
+        const project = {title, description, capital, maxInvestment, curentAmount, ownerId : req.user.userId}
         await Project.create(project)
         return res.status(200).json({success : "Project created", project})
     }catch(err){
@@ -38,16 +37,13 @@ const update = async(req, res) => {
         if(project.status === "closed"){
             return res.status(400).json({message : "You can't update on a closed project !"})
         }
-        const {title, description, capital, status, maxInvestment, curentAmount} = req.body
-        if(!title || !description || !capital || !maxInvestment || !curentAmount){
+        const {title, description, capital } = req.body
+        if(!title || !description || !capital){
             return res.status(400).json({error : "You must fill all fields !"})
         }
         project.title = title
         project.description = description
         project.capital = capital
-        project.status = status
-        project.maxInvestment = maxInvestment
-        project.curentAmount = curentAmount
         project.save()
         return res.status(200).json({success : "Project updated "})
     }catch(err) {
