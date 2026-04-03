@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 
 const investmentSchema = new mongoose.Schema({
-    "amount" : String,
-    "percentage" : Number,
+    "percentage" : Number,// kaythseb 3la 7sab capital w investWith => investWith / capital * 100
+    "investWith" : Number,//investor b shhal investa fl projet
     "investorId" : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "User"
@@ -13,4 +13,4 @@ const investmentSchema = new mongoose.Schema({
     }
 })
 const investments = new mongoose.model(investmentSchema, "investments")
-export default investmentSchema
+export default investments
