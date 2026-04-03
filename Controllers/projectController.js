@@ -53,7 +53,7 @@ const update = async(req, res) => {
 
 const getAll = async(req, res) => {
     try{
-        const projects = await Project.find()
+        const projects = await Project.find({ownerId : req.user.userId})
         if(projects.length === 0){
             return res.status(404).json({error : "No projects found !"})
         }else{
