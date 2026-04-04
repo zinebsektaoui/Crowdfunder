@@ -7,7 +7,6 @@ const userSchema = new mongoose.Schema({
     "balance" : Number,
     "role" : {
         "type" : String,
-        "default" : "projectOwner",
         "enum" : ["Admin", "Project Owner", "Investor"],
         "default" : "Project Owner"
     }
