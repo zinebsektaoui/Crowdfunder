@@ -19,9 +19,13 @@ const projectSchema = new mongoose.Schema({
     },
     "ownerId" : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "User"
-    }
+        ref : "users"
+    },
+    "investments" : [{
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "investments"
+    }]
 })
 
-const projects = mongoose.model("projects", projectSchema)
-module.exports = projects
+const Project = mongoose.model("Project", projectSchema)
+module.exports = Project
