@@ -5,9 +5,9 @@ const investmentSchema = new mongoose.Schema({
     "investWith" : Number,//investor b shhal investa fl projet => amount
     "investorId" : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "User"
+        ref : "users"
     },
-    "projcetId" : {
+    "projectId" : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "Project"
     }
