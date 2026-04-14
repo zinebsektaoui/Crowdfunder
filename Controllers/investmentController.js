@@ -42,7 +42,7 @@ const investInProject = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
-
+// okish
 const getOpenProjects = async (req, res) => {
     try{
         const projects = await Project.find({status : "open"})
